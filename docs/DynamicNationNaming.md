@@ -151,10 +151,12 @@ The function is deterministic - the same index always produces the same nation n
 
 ### Name Diversity
 
-With 182 prefixes and 72 suffixes, the function can generate:
+With 182 prefixes and 71 suffixes (includes some duplicates in the original list), the function can generate:
 
-- 182 × 72 = **13,104 unique combinations** before cycling
+- 182 × 71 = **12,922 combinations** before cycling
 - This provides more than enough diversity for any practical game scenario
+
+Note: The suffix list contains some duplicate entries (e.g., "Dominion", "Province", "Assembly") which were present in the original codebase. These duplicates don't affect functionality but slightly reduce the total number of unique combinations.
 
 ## Testing
 
