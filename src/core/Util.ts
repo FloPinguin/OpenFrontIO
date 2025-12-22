@@ -304,6 +304,9 @@ export function createRandomName(
   return randomName;
 }
 
+// Re-export generateNationName for convenience
+export { generateNationName } from "./execution/utils/BotNames";
+
 export const emojiTable = [
   ["😀", "😊", "🥰", "😇", "😎"],
   ["😞", "🥺", "😭", "😱", "😡"],

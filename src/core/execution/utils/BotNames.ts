@@ -441,3 +441,32 @@ export const COMMUNITY_PREFIXES = [
   "dxtron",
   "Sii",
 ];
+
+/**
+ * Generates a nation name by combining a prefix and suffix from the bot name lists.
+ * The name is deterministic based on the index provided.
+ *
+ * @param index - The index used to select prefix and suffix combinations
+ * @returns A nation name string (e.g., "Roman Empire", "Viking Kingdom")
+ */
+export function generateNationName(index: number): string {
+  const prefixIndex = index % BOT_NAME_PREFIXES.length;
+  const suffixIndex =
+    Math.floor(index / BOT_NAME_PREFIXES.length) % BOT_NAME_SUFFIXES.length;
+
+  const prefix = BOT_NAME_PREFIXES[prefixIndex];
+  const suffix = BOT_NAME_SUFFIXES[suffixIndex];
+  const name = `${prefix} ${suffix}`;
+
+  // Nation names must be <= 27 characters (see NationNameLength.test.ts)
+  if (name.length > 27) {
+    // If combined name is too long, try just the prefix
+    if (prefix.length <= 27) {
+      return prefix;
+    }
+    // If prefix alone is too long, truncate it
+    return prefix.substring(0, 27);
+  }
+
+  return name;
+}
